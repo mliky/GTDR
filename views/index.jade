@@ -1,5 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  header#header.alt
+    span.logo #{title}
+    h1 #{test}
+    p Just another free, fully responsive site template
+      br
+      | built by
+      a(href="https://twitter.com/ajlkn") @ajlkn
+      | for
+      a(href="https://html5up.net") HTML5 UP
+      | .
+    .row.gtr-uniform
+      .col-10
+        input(type="text" placeholder="Search")
+      .col-2
+        a.button.icon.fa-upload(href="#")
