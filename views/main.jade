@@ -1,0 +1,96 @@
+extends layout
+
+block content
+  header#header.alt
+    span.logo #{title}
+    .row.gtr-uniform
+      .col-12
+        input(type="text" placeholder="Search")
+        a(style="float:right;margin:-40px 20px 0 0 ")
+          i.fas.fa-search
+  nav#nav
+    ul
+      li
+        a(href="#VERSION29").active NEX+AGE
+        a(href="#VERSION28") EXCHAIN
+        a(href="#VERSION27") Matixx
+        a(href="#VERSION26") etc.
+  #main
+    section#VERSION29.main.special
+      header.major
+        h2 NEX+AGE
+      ui.features
+        li
+          span.icon.solid.major.style1.fa-code
+          h3 노래제목1
+        li
+          span.icon.solid.major.style2.fa-code
+          h3 노래제목2
+        li
+          span.icon.solid.major.style4.fa-code
+          h3 노래제목3
+    section#VERSION28.main.special
+      header.major
+        h2 EXCHAIN
+      ui.features
+        li
+          span.icon.solid.major.style1.fa-code
+          h3 노래제목1
+        li
+          span.icon.solid.major.style2.fa-code
+          h3 노래제목2
+        li
+          span.icon.solid.major.style4.fa-code
+          h3 노래제목3
+    section#VERSION27.main.special
+      header.major
+        h2 Matixx
+      ui.features
+        li
+          span.icon.solid.major.style1.fa-code
+          h3 노래제목1
+        li
+          span.icon.solid.major.style2.fa-code
+          h3 노래제목2
+        li
+          span.icon.solid.major.style4.fa-code
+          h3 노래제목3
+    section#VERSION26.main.special
+      header.major
+        h2 etc.
+      ui.features
+        li
+          span.icon.solid.major.style1.fa-code
+          h3 노래제목1
+        li
+          span.icon.solid.major.style2.fa-code
+          h3 노래제목2
+        li
+          span.icon.solid.major.style4.fa-code
+          h3 노래제목3
+  footer#footer
+    section
+      h2 Aliquam sed mauris
+      p Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.
+    section
+      h2 Etiam feugiat
+      dl.alt
+        dt Address
+        dd 1234 Somewhere Road &bull; Nashville, TN 00000 &bull; USA
+        dt Phone
+        dd (000) 000-0000 x 0000
+        dt Email
+        dd
+          a(href="#") information@untitled.tld
+      ul.icons
+        li
+          a(href="#").icon.brands.fa-twitter.alt
+            span.label Twitter
+        li
+          a(href="#").icon.brands.fa-instagram.alt
+            span.label Instagram
+        li
+          a(href="#").icon.brands.fa-github.alt
+            span.label Github
+    p.copyright &copy; Untitled. Design:
+      a(href="#") HTML5 UP
