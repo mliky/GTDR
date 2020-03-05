@@ -1,6 +1,6 @@
 extends layout
-
 block content
+  script(src="/js/index.js")
   header#header.alt
     span.logo #{title}
     h1 #{test}
@@ -11,8 +11,9 @@ block content
       | for
       a(href="https://html5up.net") HTML5 UP
       | .
-    .row.gtr-uniform
-      .col-12
-        input(type="text" placeholder="Search")
-        a(style="float:right;margin:-40px 20px 0 0 ")
-          i.fas.fa-search
+    form(action="/search" method="get")
+      .row.gtr-uniform
+        .col-12
+          input(type="text" placeholder="Search" name="content")
+          button(style="float:right;margin:-40px 20px 0 0 ")
+            i.fas.fa-search

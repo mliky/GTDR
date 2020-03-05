@@ -10,9 +10,13 @@ router.get('/', function(req, res, next) {
       if (err) throw err;
       var song_name = result[0].NAME;
       res.render('index', { title: '달팽이♥', test:song_name });
-
   });
-
 });
+
+/* 검색 */
+router.get('/search', function(req, res){
+    console.log(req.query);
+    res.redirect('/main');
+})
 
 module.exports = router;
