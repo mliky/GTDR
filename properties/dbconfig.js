@@ -17,7 +17,6 @@ var databaseOptions = {
     connectionLimit : 30
 };
 
-
 var mysql   = require('mysql');
 var dbconn = mysql.createConnection(databaseOptions);
 module.exports = dbconn;

@@ -15,8 +15,7 @@ router.get('/', function(req, res, next) {
 
 /* 검색 */
 router.get('/search', function(req, res){
-    console.log(req.query);
-    res.redirect('/main');
+    res.redirect('/main?content=' + req.query.content);
 })
 
 module.exports = router;
