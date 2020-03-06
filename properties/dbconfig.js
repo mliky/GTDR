@@ -14,9 +14,16 @@ var databaseOptions = {
     port     : '3306',
     database : 'dbdnduddl92',
     password : 'milky@hamdal',
-    connectionLimit : 30
+    multipleStatements: true,
+    connectionLimit   : 30
 };
 
-var mysql   = require('mysql');
+var mysql  = require('mysql');
 var dbconn = mysql.createConnection(databaseOptions);
-module.exports = dbconn;
+
+module.exports = {
+    dbconn: dbconn,
+    dbSql : function(sql, param, callback){
+        dbconn.query(sql, param, callback);
+    }
+};

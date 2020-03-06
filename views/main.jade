@@ -2,33 +2,40 @@ extends layout
 
 block content
   header#header.alt
-    span.logo #{title}
-    .row.gtr-uniform
-      .col-12
-        input(type="text" placeholder="Search")
-        a(style="float:right;margin:-40px 20px 0 0 ")
-          i.fas.fa-search
+    span.logo #{content}
+    form(action="/search" method="get")
+      .row.gtr-uniform
+        .col-12
+          input(type="text" placeholder="Search" name="content" value="#{content}")
+          button(style="float:right;margin:-40px 20px 0 0 ")
+            i.fas.fa-search
   nav#nav
     ul
       li
-        a(href="#VERSION29").active NEX+AGE
-        a(href="#VERSION28") EXCHAIN
-        a(href="#VERSION27") Matixx
-        a(href="#VERSION26") etc.
+        -for(var i=0; i < versions.length; i++){
+          case i
+            when 0
+              a(href="#VERSION#{versions[i].VERSION}").active #{versions[i].VERSION_NAME}
+            when 1
+            when 2
+              a(href="#VERSION#{versions[i].VERSION}") #{versions[i].VERSION_NAME}
+            when 3
+              a(href="#VERSIONetc") etc.
+            default
+              -break;
+        -}
   #main
-    section#VERSION29.main.special
-      header.major
-        h2 NEX+AGE
-      ui.features
-        li
-          span.icon.solid.major.style1.fa-code
-          h3 노래제목1
-        li
-          span.icon.solid.major.style2.fa-code
-          h3 노래제목2
-        li
-          span.icon.solid.major.style4.fa-code
-          h3 노래제목3
+    -for(var i=0; i < versions.length; i++){
+      section(id="VERSION#{i < 3 ? versions[i].VERSION : 'etc'}").main.special
+        header.major
+          h2 #{i < 3 ? versions[i].VERSION_NAME : 'etc.'}
+        ui.features
+          -for(var i=0; i < songs.length; i++){
+            li(data-id="#{songs[i].ID}" data-version="#{songs[i].VERSION}")
+              span(style="background-image:./images/song/#{songs[i].ID}.jpg").icon.solid.major.style1.fa-code
+              h3 #{songs[i].NAME}
+          -}
+    -}
     section#VERSION28.main.special
       header.major
         h2 EXCHAIN

@@ -1,7 +1,7 @@
 var createError = require('http-errors');
 var express = require('express');
 var mysql = require('mysql');
-var dbconn = require('./properties/dbconfig');
+var dbConfig = require('./properties/dbconfig');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -14,7 +14,7 @@ var app = express();
 
 
 // DB
-dbconn.connect(function(err, rows) {
+dbConfig.dbconn.connect(function(err, rows) {
     if (err) {
         console.error('mysql connection error :' + err);
     } else {
@@ -51,5 +51,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.locals.pretty= true;
 
 module.exports = app;
