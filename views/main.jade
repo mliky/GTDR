@@ -32,7 +32,7 @@ block content
         ui.features
           -for(var i=0; i < songs.length; i++){
             li(data-id="#{songs[i].ID}" data-version="#{songs[i].VERSION}")
-              span(style="background-image:./images/song/#{songs[i].ID}.jpg").icon.solid.major.style1.fa-code
+              img(src="images/song/#{songs[i].ID}.jpg")
               h3 #{songs[i].NAME}
           -}
     -}
