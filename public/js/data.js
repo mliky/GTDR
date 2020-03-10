@@ -1,9 +1,8 @@
 $(function() {
 
     $("#jsGrid").jsGrid({
-        height: "70%",
+        height: "300px",
         width: "100%",
-        filtering: true,
         inserting: true,
         editing: true,
         sorting: true,
@@ -13,11 +12,11 @@ $(function() {
         pageButtonCount: 5,
         deleteConfirm: "Do you really want to delete client?",
         controller: {
-            loadData: function(filter) {
+            loadData: function(item) {
                 return $.ajax({
                     type: "GET",
                     url: "/data/song",
-                    data: filter
+                    data: item
                 });
             },
             insertItem: function(item) {
@@ -28,6 +27,7 @@ $(function() {
                 });
             },
             updateItem: function(item) {
+                console.log(item);
                 return $.ajax({
                     type: "PUT",
                     url: "/data/song",
@@ -53,7 +53,7 @@ $(function() {
             { name: "ARTIST_KR", type: "text", width: 150 },
             { name: "ARTIST_JP", type: "text", width: 150 },
             { name: "BPM", type: "number", width: 50, filtering: false },
-            { name: "VERSION", type: "select", items: {"29":"GITADORA"}, valueField: "VERSION", textField: "VERSION_NAME" },
+            { name: "VERSION", type: "select", items: codeArr.VERSION, valueField: "CODE_VALUE", textField: "CODE_NAME" },
 
             { name: "HOT_YN", type: "checkbox", title: "HOT_YN", sorting: false },
             { name: "DEL_YN", type: "checkbox", title: "DEL_YN", sorting: false },

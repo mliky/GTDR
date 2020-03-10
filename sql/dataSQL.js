@@ -24,23 +24,7 @@ var selectSong =
 
 var insertSong =
     "INSERT INTO SONG" +
-    "     ( ID" +
-    "     , NAME" +
-    "     , NAME_EN" +
-    "     , NAME_KR" +
-    "     , NAME_JP" +
-    "     , ARTIST" +
-    "     , ARTIST_EN" +
-    "     , ARTIST_KR" +
-    "     , ARTIST_JP" +
-    "     , BPM" +
-    "     , VERSION" +
-    "     , TAG" +
-    "     , HOT_YN" +
-    "     , DEL_YN" +
-    "     , SEQ" +
-    "     , IMG" +
-    "     ) VALUES";
+    "   SET ?";
 
 var updateSong =
     "UPDATE SONG" +

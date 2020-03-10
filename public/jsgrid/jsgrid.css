@@ -18,6 +18,7 @@
 .jsgrid textarea,
 .jsgrid select {
     font-size: 1em;
+    color:#636363;
 }
 
 .jsgrid-grid-header {
@@ -46,11 +47,13 @@
 
 .jsgrid-cell {
     padding: 0.5em 0.5em;
+    color:#636363;
 }
 
 .jsgrid-сell,
 .jsgrid-header-cell {
     box-sizing: border-box;
+    color:#636363;
 }
 
 .jsgrid-align-left {

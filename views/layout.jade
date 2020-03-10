@@ -3,7 +3,9 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-    script(type='text/javascript' src="https://kit.fontawesome.com/d3bec84c7c.js" crossorigin="anonymous")
+    link(rel='stylesheet', href='/node_modules/@fortawesome/fontawesome-free/css/fontawesome.css')
+    script(type='text/javascript' src='/node_modules/@fortawesome/fontawesome-free/js/fontawesome.js')
+    script(type='text/javascript' src='/node_modules/jquery/dist/jquery.js')
   body.is-preload
     #wrapper
       block content

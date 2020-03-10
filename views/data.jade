@@ -1,8 +1,12 @@
-extends layout
-
-block content
-    script(src='/jsgrid/jsgrid.js')
-    script(src='/js/data.js')
-    link(href='/jsgrid/jsgrid.css', rel='stylesheet')
-    link(href='/jsgrid/jsgrid-theme.css', rel='stylesheet')
-    div#jsGrid
+doctype html
+html
+    head
+        link(rel='stylesheet', href='/jsgrid/jsgrid.css')
+        link(rel='stylesheet', href='/jsgrid/jsgrid-theme.css')
+        script.
+            var codeArr = !{JSON.stringify(codeArr)};;
+        script(type='text/javascript' src='/node_modules/jquery/dist/jquery.js')
+        script(type='text/javascript' src='/jsgrid/jsgrid.js')
+        script(type='text/javascript' src='/js/data.js')
+    body
+        div#jsGrid(style="font-size:12px;")

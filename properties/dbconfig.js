@@ -27,3 +27,4 @@ module.exports = {
         dbconn.query(sql, param, callback);
     }
 };
+

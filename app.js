@@ -23,6 +23,32 @@ dbConfig.dbconn.connect(function(err, rows) {
     }
 });
 
+// read Code
+app.use(function(req, res, next) {
+    dbConfig.dbSql("SELECT * FROM CODE ORDER BY CODE_ID, SEQ",[], function (err, result, fields) {
+        if (err) throw err;
+
+        var codeListMap = {};
+        var codeListArr = {};
+        for(var i = 0; i < result.length; i++){
+            var codeObj = (codeListMap[result[i].CODE_ID] == undefined) ? {} : codeListMap[result[i].CODE_ID];
+            codeObj[result[i].CODE_VALUE] = result[i].CODE_NAME;
+            codeListMap[result[i].CODE_ID] = codeObj;
+
+            var codeArr = (codeListArr[result[i].CODE_ID] == undefined) ? [] : codeListArr[result[i].CODE_ID];
+            if(result[i].CODE_ID == 'VERSION')
+                codeArr.unshift(result[i]);
+            else
+                codeArr.push(result[i]);
+            codeListArr[result[i].CODE_ID] = codeArr;
+        }
+
+        res.locals.codeMap = codeListMap;
+        res.locals.codeArr = codeListArr;
+        next();
+    });
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -32,6 +58,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/node_modules', express.static(path.join(__dirname, '/node_modules')));
 
 app.use('/', indexRouter);
 app.use('/main', mainRouter);
