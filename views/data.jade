@@ -3,10 +3,20 @@ html
     head
         link(rel='stylesheet', href='/jsgrid/jsgrid.css')
         link(rel='stylesheet', href='/jsgrid/jsgrid-theme.css')
+        style.
+            .essensialRed{color:red;}
+            .jsgrid{font-size:12px;}
+        script(type='text/javascript' src='/node_modules/jquery/dist/jquery.js')
         script.
             var codeArr = !{JSON.stringify(codeArr)};;
-        script(type='text/javascript' src='/node_modules/jquery/dist/jquery.js')
+            codeArr.VERSION.unshift({CODE_VALUE:'', CODE_NAME:'선택'});
         script(type='text/javascript' src='/jsgrid/jsgrid.js')
         script(type='text/javascript' src='/js/data.js')
     body
-        div#jsGrid(style="font-size:12px;")
+        h3 곡
+        div#jsGridSong
+        h3 채보/키워드 - 곡을 선택해주세요.
+        div#jsGridSheet
+        div#jsGridKeword
+        h3 영상 - 채보를 선택해주세요.
+        div#jsGridVideo
