@@ -6,6 +6,8 @@ html
         style.
             .essensialRed{color:red;}
             .jsgrid{font-size:12px;}
+            #jsGridVideo{display:inline-block;}
+            #jsGridKeyword{display:inline-block;}
         script(type='text/javascript' src='/node_modules/jquery/dist/jquery.js')
         script.
             var codeArr = !{JSON.stringify(codeArr)};;
@@ -15,8 +17,13 @@ html
     body
         h3 곡
         div#jsGridSong
-        h3 채보/키워드 - 곡을 선택해주세요.
+        h3 채보 -
+            input#selectedId(type="hidden" value="")
+            span#selectedSong 곡을 선택해주세요.
         div#jsGridSheet
-        div#jsGridKeword
-        h3 영상 - 채보를 선택해주세요.
+        h3 영상/키워드 -
+            input#selectedType(type="hidden" value="")
+            input#selectedStep(type="hidden" value="")
+            span#selectedSheet 채보를 선택해주세요.
         div#jsGridVideo
+        div#jsGridKeyword

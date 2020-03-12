@@ -99,7 +99,8 @@ var selectSheet =
     "     , NOTES_CNT" +
     "     , 8_BPM" +
     "     , MEMO" +
-    "  FROM SHEET";
+    "  FROM SHEET" +
+    " WHERE ID = ?";
 
 var insertSheet =
     "INSERT INTO SHEET" +
@@ -123,13 +124,13 @@ var deleteSheet =
 
 sqlMapObj.selectSheet = function(param, callback){
     dbConfig.dbSql(selectSheet, param, callback);
-}
+};
 sqlMapObj.insertSheet = function(param, callback){
     param.LEVEL     = param.LEVEL     ? parseFloat(param.LEVEL, 10) : null;
     param.NOTES_CNT = param.NOTES_CNT ? parseInt(param.NOTES_CNT, 10) : null;
     param["8_BPM"]  = param["8_BPM"]  ? parseInt(param["8_BPM"], 10) : null;
     dbConfig.dbSql(insertSheet, param, callback);
-}
+};
 sqlMapObj.updateSheet = function(param, callback){
     var paramArr = [
         parseFloat(param.LEVEL, 10),
@@ -142,8 +143,97 @@ sqlMapObj.updateSheet = function(param, callback){
     ];
 
     dbConfig.dbSql(updateSheet, paramArr, callback);
-}
+};
 sqlMapObj.deleteSheet = function(param, callback){
-    dbConfig.dbSql(deleteSheet, param, callback);
-}
+    dbConfig.dbSql(deleteSheet, [param.ID, param.TYPE, param.STEP], callback);
+};
+
+
+var selectVideo =
+    "SELECT ID" +
+    "     , TYPE" +
+    "     , STEP" +
+    "     , SRN" +
+    "     , RANDOM" +
+    "     , REVERSE" +
+    "     , URL" +
+    "  FROM VIDEO" +
+    " WHERE ID = ?" +
+    "   AND TYPE = ?" +
+    "   AND STEP = ?";
+
+var insertVideo =
+    "INSERT INTO VIDEO" +
+    "   SET ?";
+
+var updateVideo =
+    "UPDATE VIDEO" +
+    "   SET RANDOM = ?" +
+    "     , REVERSE = ?" +
+    "     , URL = ?" +
+    " WHERE ID = ?" +
+    "   AND TYPE = ?" +
+    "   AND STEP = ?" +
+    "   AND SRN = ?";
+
+var deleteVideo =
+    "DELETE FROM VIDEO" +
+    " WHERE ID = ?" +
+    "   AND TYPE = ?" +
+    "   AND STEP = ?" +
+    "   AND SRN = ?";
+
+sqlMapObj.selectVideo = function(param, callback){
+    dbConfig.dbSql(selectVideo, [param.ID, param.TYPE, param.STEP], callback);
+};
+sqlMapObj.insertVideo = function(param, callback){
+    param.SRN = parseInt(param.SRN, 10);
+    dbConfig.dbSql(insertVideo, param, callback);
+};
+sqlMapObj.updateVideo = function(param, callback){
+    var paramArr = [
+        param.RANDOM,
+        param.REVERSE,
+        param.URL,
+        param.ID,
+        param.TYPE,
+        param.STEP,
+        parseInt(param.SRN, 10)
+    ];
+
+    dbConfig.dbSql(updateVideo, paramArr, callback);
+};
+sqlMapObj.deleteVideo = function(param, callback){
+    dbConfig.dbSql(deleteVideo, [param.ID, param.TYPE, param.STEP, parseInt(param.SRN, 10)], callback);
+};
+
+var selectKeyword =
+    "SELECT ID" +
+    "     , TYPE" +
+    "     , STEP" +
+    "     , KEYWORD" +
+    "  FROM KEYWORD" +
+    " WHERE ID = ?" +
+    "   AND TYPE = ?" +
+    "   AND STEP = ?";
+
+var insertKeyword =
+    "INSERT INTO KEYWORD" +
+    "   SET ?";
+
+var deleteKeyword =
+    "DELETE FROM KEYWORD" +
+    " WHERE ID = ?" +
+    "   AND TYPE = ?" +
+    "   AND STEP = ?";
+
+sqlMapObj.selectKeyword = function(param, callback){
+    dbConfig.dbSql(selectKeyword, [param.ID, param.TYPE, param.STEP], callback);
+};
+sqlMapObj.insertKeyword = function(param, callback){
+    dbConfig.dbSql(insertKeyword, param, callback);
+};
+sqlMapObj.deleteKeyword = function(param, callback){
+    dbConfig.dbSql(deleteKeyword, [param.ID, param.TYPE, param.STEP], callback);
+};
 module.exports = sqlMapObj;

@@ -65,30 +65,7 @@ router.put('/sheet', function(req, res, next) {
 });
 
 router.delete('/sheet', function(req, res, next) {
-    dbSql.deleteSheet(req.body.ID, function (err, results, fields) {
-        if (err) throw err;
-        res.json(results);
-    });
-});
-/********************************************************/
-/********************** KEYWORD *************************/
-router.get('/keyword', function(req, res, next) {
-    dbSql.selectSong(req.query, function (err, results, fields) {
-        if (err) throw err;
-        res.json(results);
-    });
-});
-
-router.post('/keyword', function(req, res, next) {
-    dbSql.insertSong(req.body, function (err, results, fields) {
-        if (err) throw err;
-        console.log(results);
-        res.json(req.body);
-    });
-});
-
-router.delete('/keyword', function(req, res, next) {
-    dbSql.deleteSong(req.body.ID, function (err, results, fields) {
+    dbSql.deleteSheet(req.body, function (err, results, fields) {
         if (err) throw err;
         res.json(results);
     });
@@ -96,14 +73,14 @@ router.delete('/keyword', function(req, res, next) {
 /******************************************************/
 /********************** VIDEO *************************/
 router.get('/video', function(req, res, next) {
-    dbSql.selectSong(req.query, function (err, results, fields) {
+    dbSql.selectVideo(req.query, function (err, results, fields) {
         if (err) throw err;
         res.json(results);
     });
 });
 
 router.post('/video', function(req, res, next) {
-    dbSql.insertSong(req.body, function (err, results, fields) {
+    dbSql.insertVideo(req.body, function (err, results, fields) {
         if (err) throw err;
         console.log(results);
         res.json(req.body);
@@ -111,15 +88,39 @@ router.post('/video', function(req, res, next) {
 });
 
 router.put('/video', function(req, res, next) {
-    dbSql.updateSong(req.body, function (err, results, fields) {
+    dbSql.updateVideo(req.body, function (err, results, fields) {
         if (err) throw err;
         res.json(req.body);
     });
 });
 router.delete('/video', function(req, res, next) {
-    dbSql.deleteSong(req.body.ID, function (err, results, fields) {
+    dbSql.deleteVideo(req.body, function (err, results, fields) {
         if (err) throw err;
         res.json(results);
     });
 });
+/********************************************************/
+/********************** KEYWORD *************************/
+router.get('/keyword', function(req, res, next) {
+    dbSql.selectKeyword(req.query, function (err, results, fields) {
+        if (err) throw err;
+        res.json(results);
+    });
+});
+
+router.post('/keyword', function(req, res, next) {
+    dbSql.insertKeyword(req.body, function (err, results, fields) {
+        if (err) throw err;
+        console.log(results);
+        res.json(req.body);
+    });
+});
+
+router.delete('/keyword', function(req, res, next) {
+    dbSql.deleteKeyword(req.body, function (err, results, fields) {
+        if (err) throw err;
+        res.json(results);
+    });
+});
+/********************************************************/
 module.exports = router;
